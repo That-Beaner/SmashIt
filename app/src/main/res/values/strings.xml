@@ -1,0 +1,61 @@
+<resources>
+    <string name="app_name">Smash it! - Kahoot</string>
+    <string name="game_pin">Game Pin</string>
+    <string name="enter">Enter</string>
+    <string name="smashIt">Smash it!</string>
+    <string name="title_activity_smashing">Smashing in Progress&#8230;</string>
+    <string name="title_activity_settings">Settings</string>
+
+    <!--Not translated -->
+    <string name="answered">Answered: </string>
+    <string name="SmashingMode">Smashing mode:</string>
+    <string name="badPinBody">The pin you entered doesn\'t correspond to a kahoot</string>
+    <string name="badPin">Invalid game pin</string>
+    <string name="oldSmash">Outdated smashing mode</string>
+    <string name="oldSmashInfo">It is strongly recommended to use \"Kahoot smash\" mode unless it is broken. Do you want to continue?</string>
+    <string name="randomAnswer">Random Answer</string>
+    <!--END-->
+
+    <string-array name="NamingMethods">
+        <item>Random name</item>
+        <item>Random Ending</item>
+        <item>Random Caps</item>
+        <!-- not translated -->
+        <item>Ordered ending</item>
+        <!--END-->
+    </string-array>
+
+    <!--Havent translated-->
+    <string-array name="SmashingMethods">
+        <item>Kahoot smash</item>
+        <!--<item>Lobby flood</item>-->
+        <item>Classic (not recommended)</item>
+        <item>Retro (don\'t use)</item>
+    </string-array>
+    <!--END-->
+
+    <string name="save">Save</string>
+    <string name="newExample">New example</string>
+    <string name="numberSmashers">Number of Smashers:</string>
+    <string name="baseName">Base Name:</string>
+    <string name="example">Example: </string>
+    <string name="namingMethod">Naming method:</string>
+
+    <string name="joined">Joined: </string>
+    <string name="verified">Verified: </string>
+    <string name="smashing">Smashing...</string>
+    <string name="warning">Most phones cannot handle more than 35 smashers</string>
+    <string name="warningTitle">Please smash responsibly</string>
+    <string name="opPhone">My phone\'s OP</string>
+    <string name="cancel">Cancel</string>
+    <string name="abort">Abort</string>
+    <string name="contin">Continue</string>
+    <string name="contiuneVerify">Do you want to continue trying?</string>
+    <string name="invalidPin">Game pin invalid</string>
+    <string name="enterGameCode">You will need to enter the game code</string>
+    <string name="twoStepVerify">2 step verification</string>
+    <string name="loadingSmashers">Loading smashers...</string>
+    <string name="legacySmashers">Smashers loaded (Legacy mode)</string>
+    <string name="allVerified">All verified</string>
+    <string name="smashingProgress">Smashing in progress...</string>
+</resources>

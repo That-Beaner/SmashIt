@@ -1,0 +1,54 @@
+<resources>
+    <string name="app_name">Kraak het! - Kahoot</string>
+    <string name="game_pin">Game Pin</string>
+    <string name="enter">Doorgaan</string>
+    <string name="smashIt">Kraak het!</string>
+    <string name="title_activity_smashing">Bezig met kraken...</string>
+    <string name="title_activity_settings">Instellingen</string>
+
+    <string name="answered">Beantwoord: </string>
+    <string name="SmashingMode">Kraker mode:</string>
+    <string name="badPinBody">De ingevoerde pin is niet verbonden met een spel</string>
+    <string name="badPin">Ongeldige spel pin</string>
+    <string name="oldSmash">Verouderde Kraker mode</string>
+    <string name="oldSmashInfo">Het is aanbevolen om de \"Kahoot Kraken\" mode te gebruiken, behalve als het niet werkt. Wilt u doorgaan?</string>
+    <string name="randomAnswer">Willekeurig antwoord</string>
+
+    <string-array name="SmashingMethods">
+        <item>Kahoot Kraken</item>
+        <!--<item>Lobby vult</item>-->
+        <item>Klassiek (niet voorgesteld)</item>
+        <item>Retro (niet gebruiken)</item>
+    </string-array>
+
+    <string-array name="NamingMethods">
+        <item>Willekeurige namen</item>
+        <item>Willekeurig einden</item>
+        <item>Willekeurige hoofdletters</item>
+        <item>Gerangschikt einde</item>
+    </string-array>
+
+    <string name="save">Bewaar</string>
+    <string name="newExample">Nieuw voorbeeld</string>
+    <string name="numberSmashers">Hoeveelheid van Krakers:</string>
+    <string name="baseName">Basis naam</string>
+    <string name="example">Voorbeeld:</string>
+    <string name="namingMethod">Benoemings methode</string>
+    <string name="joined">Toegetreden:</string>
+    <string name="verified">Geverifieerd:</string>
+    <string name="smashing">Kraken...</string>
+    <string name="warning">Meeste mobieltjes kunnen niet meer dan 35 Krakers ondersteunen</string>
+    <string name="warningTitle">Kraak alstublieft verantwoordelijk</string>
+    <string name="opPhone">Mijn telefoon is the goed</string>
+    <string name="cancel">Annuleer</string>
+    <string name="abort">Afbreken</string>
+    <string name="contin">Doorgaan</string>
+    <string name="contiuneVerify">Will je door proberen te gaan?</string>
+    <string name="invalidPin">Game pin is ongeldig</string>
+    <string name="enterGameCode">Je zal de game code moeten invoeren</string>
+    <string name="twoStepVerify">2 stappen verificatie</string>
+    <string name="loadingSmashers">Krakers laden...</string>
+    <string name="legacySmashers">Krakers geladen (Legacy mode)</string>
+    <string name="allVerified">Alles geverifieerd</string>
+    <string name="smashingProgress">Kraken wordt uitgevoerd...</string>
+</resources>

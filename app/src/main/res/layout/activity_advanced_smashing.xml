@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/kahootBlue"
+    tools:context="tk.smashr.kahootsmasher.AdvancedSmashing"
+    android:screenOrientation="portrait">
+
+    <TextView
+        android:id="@+id/joined"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:textSize="13sp"
+        android:text="@string/joined"
+        android:textColor="@color/black" />
+
+    <TextView
+        android:id="@+id/answered"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/joined"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="12dp"
+        android:textSize="13sp"
+        android:text="@string/answered"
+        android:textColor="@color/black" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:id="@+id/relativeLayout"
+        android:layout_below="@+id/answered"
+        android:layout_centerHorizontal="true">
+
+        <Button
+            android:id="@+id/redButton"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:background="@drawable/red_answer_pressed" />
+
+        <TextView
+            android:id="@+id/redText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/redButton"
+            android:layout_alignBottom="@+id/redButton"
+            android:layout_marginStart="10dp"
+            android:textSize="13sp"
+            android:layout_toEndOf="@+id/redButton"
+            android:text="0/100" />
+
+        <Button
+            android:id="@+id/blueButton"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_alignStart="@+id/redButton"
+            android:layout_below="@+id/redButton"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/blue_answer_pressed" />
+
+        <TextView
+            android:id="@+id/blueText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/blueButton"
+            android:layout_alignBottom="@+id/blueButton"
+            android:layout_marginStart="10dp"
+            android:textSize="13sp"
+            android:layout_toEndOf="@+id/blueButton"
+            android:text="0/100" />
+
+        <Button
+            android:id="@+id/yellowButton"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_alignStart="@+id/blueButton"
+            android:layout_below="@+id/blueButton"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/yellow_answer_pressed" />
+
+        <TextView
+            android:id="@+id/yellowText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/yellowButton"
+            android:layout_alignBottom="@+id/yellowButton"
+            android:layout_marginStart="10dp"
+            android:textSize="13sp"
+            android:layout_toEndOf="@+id/yellowButton"
+            android:text="0/100" />
+
+        <Button
+            android:id="@+id/greenButton"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_alignStart="@+id/yellowButton"
+            android:layout_below="@+id/yellowButton"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/green_answer_pressed" />
+
+        <TextView
+            android:id="@+id/greenText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/greenButton"
+            android:layout_alignBottom="@+id/greenButton"
+            android:layout_marginStart="10dp"
+            android:textSize="13sp"
+            android:layout_toEndOf="@+id/greenButton"
+            android:text="0/100" />
+
+    </RelativeLayout>
+
+    <CheckBox
+        android:id="@+id/isRandom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/relativeLayout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="12dp"
+        android:checked="true"
+        android:duplicateParentState="false"
+        android:text="@string/randomAnswer" />
+
+</RelativeLayout>

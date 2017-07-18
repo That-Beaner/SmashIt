@@ -1,0 +1,56 @@
+<resources>
+    <string name="app_name">Fracas La! - Kahoot</string>
+    <string name="game_pin">Code de jeu</string>
+    <string name="enter">Entrer</string>
+    <string name="smashIt">Fracas La!</string>
+    <string name="title_activity_smashing">Le Fracas est en cours…</string>
+    <string name="title_activity_settings">paramètres</string>
+
+    <string name="answered">Répondu: </string>
+    <string name="SmashingMode">Mode de fracasser:</string>
+    <string name="badPinBody">Le code que vous avez utilisé ne fait pas le paire avec une kahoot</string>
+    <string name="badPin">Code de joue invalide</string>
+    <string name="oldSmash">Mode de fracasser dépassé</string>
+    <string name="oldSmashInfo">C’est recommandé fortement pour utiliser \"Fracasser Kahoot\" mode à moins qu’il ne marche pas. Es que vous voulez continuer?</string>
+    <string name="randomAnswer">Réponse aléatoire</string>
+
+    <string-array name="SmashingMethods">
+        <item>Fracasser Kahoot</item>
+        <!--<item>Inondation de lobby</item>-->
+        <item>Classique (not recommended)</item>
+        <item>Rétro (n\'utilise pas)</item>
+    </string-array>
+
+
+    <string-array name="NamingMethods">
+        <item>Nom Aléatoire</item>
+        <item>Suffixe Aléatoire</item>
+        <item>Majuscule Aléatoire</item>
+        <item>Ordre de terminacion</item>
+    </string-array>
+
+    <string name="save">Sauver</string>
+    <string name="newExample">Nouveau exemple</string>
+    <string name="numberSmashers">Nombres des Fracas:</string>
+    <string name="baseName">Nom défaut</string>
+    <string name="example">Exemple:</string>
+    <string name="namingMethod">Méthode de nom</string>
+
+    <string name="joined">Rejoindre:</string>
+    <string name="verified">Vérifié:</string>
+    <string name="smashing">Fracasser...</string>
+    <string name="warning">Les plus des téléphones ne peut pas utiliser plus de 35 fracas</string>
+    <string name="warningTitle">S\'il vous plaît fracasser responsable</string>
+    <string name="opPhone">Mon Téléphones est Dominé</string>
+    <string name="cancel">Annuler</string>
+    <string name="abort">Abandonner</string>
+    <string name="contin">Continuer</string>
+    <string name="contiuneVerify">Voulez-vous continuer à essayer?</string>
+    <string name="invalidPin">Code de Jeux Invalide</string>
+    <string name="enterGameCode">Il faut mettre le code de jeu</string>
+    <string name="twoStepVerify">Vérification en deux étapes</string>
+    <string name="loadingSmashers">Chargement les Fracas...</string>
+    <string name="legacySmashers">Les Fracas Sont chargés (Mode hérité)</string>
+    <string name="allVerified">Tout Vérifié</string>
+    <string name="smashingProgress">Fracasser en Cours...</string>
+</resources>
