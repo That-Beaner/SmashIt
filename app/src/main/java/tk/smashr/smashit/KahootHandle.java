@@ -1,5 +1,6 @@
 package tk.smashr.smashit;
 
+import android.os.Debug;
 import android.util.Log;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -49,7 +50,7 @@ class KahootHandle {
         if(choice!=-1)
         {
             currentMessageId++;
-            client.send("[{\"channel\":\"/service/controller\",\"data\":{\"id\":6,\"type\":\"message\",\"gameid\":"+gamepin+",\"host\":\"kahoot.it\",\"content\":\"{\\\"choice\\\":"+choice+",\\\"meta\\\":{\\\"lag\\\":64,\\\"device\\\":{\\\"userAgent\\\":\\\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36\\\",\\\"screen\\\":{\\\"width\\\":1920,\\\"height\\\":1040}}}}\"},\"id\":\""+(currentMessageId-1)+"\",\"clientId\":\""+clientId+"\"}]");
+            client.send("[{\"channel\":\"/service/controller\",\"data\":{\"id\":45,\"type\":\"message\",\"gameid\":"+gamepin+",\"host\":\"kahoot.it\",\"content\":\"{\\\"choice\\\":"+choice+",\\\"meta\\\":{\\\"lag\\\":64,\\\"device\\\":{\\\"userAgent\\\":\\\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36\\\",\\\"screen\\\":{\\\"width\\\":1920,\\\"height\\\":1040}}}}\"},\"id\":\""+(currentMessageId-1)+"\",\"clientId\":\""+clientId+"\"}]");
             parent.answers.set(smasherIndex,choice);
         }
     }
@@ -244,7 +245,7 @@ class KahootHandle {
         @Override
         public void onMessage(WebSocket websocket, String message) {
             message = message.substring(1,message.length()-1);
-            //Log.d(TAG, String.format("Got string message! %s: ", message));
+            //Log.println(Log.INFO, "Message",String.format("Got string message! %s: ", message));
             try
             {
                 JSONObject jsonMessage = new JSONObject(message);
