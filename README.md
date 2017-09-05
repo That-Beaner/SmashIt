@@ -11,3 +11,5 @@ Additionally, if you would like to modify my code or re-distribute my work pleas
 I am not responsible for any misuse of this code as I provide it as an educational resource only
 
 This project can be edited and compiled using andoid studio
+
+Pre-complied version: https://www.mediafire.com/file/qzq7nwn4zw827oo/SmashIt.apk
