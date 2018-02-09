@@ -42,14 +42,12 @@ public class GamePinActivity extends AppCompatActivity {
                 b.putInt("gamePin", Integer.parseInt(gamePin.getText().toString()));
                 startSmash.putExtras(b);
                 startActivity(startSmash);
-                finish();
             }
         }).setNegativeButton("Settings", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 Intent startSmash = new Intent(GamePinActivity.this, SettingsActivity.class);
                 startActivity(startSmash);
-                finish();
             }
         }).setTitle(getString(R.string.oldSmash)).setMessage(getString(R.string.oldSmashInfo));
         oldSmashing = oldSmashBuilder.create();
@@ -90,7 +88,6 @@ public class GamePinActivity extends AppCompatActivity {
                                             b.putInt("gamePin", Integer.parseInt(gamePin.getText().toString()));
                                             startSmash.putExtras(b);
                                             startActivity(startSmash);
-                                            finish();
                                     }
                                 }
                             }, new Response.ErrorListener() {

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -61,6 +62,13 @@ public class AdvancedSmashing extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_advanced_smashing);
+
+        // Set up the toolbar immediately after inflating with content
+        Toolbar toolbar = findViewById(R.id.toolbar_advanced_smashing);
+        setSupportActionBar(toolbar);
+        //noinspection ConstantConditions
+        getSupportActionBar().setTitle(R.string.title_activity_smashing);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         //Get UI
         redBtn = findViewById(R.id.redButton);

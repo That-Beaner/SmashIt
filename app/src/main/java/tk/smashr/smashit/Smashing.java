@@ -194,13 +194,6 @@ public class Smashing extends AppCompatActivity {
 
             layout.addView(webViews[i], layoutp);
         }
-        Button backButton = findViewById(R.id.backButton);
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onBackPressed();
-            }
-        });
 
         smashingReadout = findViewById(R.id.Progress);
         verifiedReadouts = findViewById(R.id.Verified);
