@@ -121,7 +121,7 @@ public class Smashing extends AppCompatActivity {
             layout.removeView(webViews[i]);
             webViews[i] = null;
         }
-        Intent startSmash = new Intent(Smashing.this, GamePin.class);
+        Intent startSmash = new Intent(Smashing.this, GamePinActivity.class);
         startActivity(startSmash);
         finish();
     }

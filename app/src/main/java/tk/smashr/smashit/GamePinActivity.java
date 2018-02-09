@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -18,7 +20,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 
-public class GamePin extends AppCompatActivity {
+public class GamePinActivity extends AppCompatActivity {
     EditText gamePin;
     RequestQueue queue;
     AlertDialog pinWrong;
@@ -34,7 +36,7 @@ public class GamePin extends AppCompatActivity {
         oldSmashBuilder.setPositiveButton(getString(R.string.contin), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                Intent startSmash = new Intent(GamePin.this, Smashing.class);
+                Intent startSmash = new Intent(GamePinActivity.this, Smashing.class);
                 Bundle b = new Bundle();
                 b.putInt("gamePin", Integer.parseInt(gamePin.getText().toString()));
                 startSmash.putExtras(b);
@@ -44,7 +46,7 @@ public class GamePin extends AppCompatActivity {
         }).setNegativeButton("Settings", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                Intent startSmash = new Intent(GamePin.this, SettingsActivity.class);
+                Intent startSmash = new Intent(GamePinActivity.this, SettingsActivity.class);
                 startActivity(startSmash);
                 finish();
             }
@@ -76,7 +78,7 @@ public class GamePin extends AppCompatActivity {
                                             break;
                                         case 0:
                                         default:
-                                            Intent startSmash = new Intent(GamePin.this, AdvancedSmashing.class);
+                                            Intent startSmash = new Intent(GamePinActivity.this, AdvancedSmashing.class);
                                             Bundle b = new Bundle();
                                             b.putInt("gamePin", Integer.parseInt(gamePin.getText().toString()));
                                             startSmash.putExtras(b);
@@ -96,16 +98,24 @@ public class GamePin extends AppCompatActivity {
                 }
             }
         });
+    }
 
-        Button settingsButton = (Button) findViewById(R.id.settings);
-        settingsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent startSmash = new Intent(GamePin.this, SettingsActivity.class);
-                startActivity(startSmash);
-                finish();
-            }
-        });
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        switch (item.getItemId()){
+            case R.id.action_settings:
+                startActivity(new Intent(GamePinActivity.this, SettingsActivity.class));
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

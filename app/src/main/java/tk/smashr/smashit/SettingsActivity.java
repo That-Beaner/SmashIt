@@ -1,6 +1,5 @@
 package tk.smashr.smashit;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
@@ -22,13 +21,6 @@ public class SettingsActivity extends AppCompatActivity {
     TextView title5;
     EditText number;
     RelativeLayout numberInput;
-
-    @Override
-    public void onBackPressed() {
-        Intent startSmash = new Intent(SettingsActivity.this, GamePin.class);
-        startActivity(startSmash);
-        finish();
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

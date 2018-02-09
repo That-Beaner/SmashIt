@@ -178,7 +178,7 @@ public class AdvancedSmashing extends AppCompatActivity {
             kahootSmashers.get(i).disconnect();
         }
 
-        Intent startSmash = new Intent(AdvancedSmashing.this, GamePin.class);
+        Intent startSmash = new Intent(AdvancedSmashing.this, GamePinActivity.class);
         startActivity(startSmash);
         finish();
     }

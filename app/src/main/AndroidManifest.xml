@@ -13,8 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".GamePin"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:name=".GamePinActivity"
+            android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -29,7 +29,13 @@
         <activity
             android:name=".SettingsActivity"
             android:label="@string/title_activity_settings"
-            android:windowSoftInputMode="stateHidden" />
+            android:parentActivityName=".GamePinActivity"
+            android:windowSoftInputMode="stateHidden">
+            <intent-filter>
+                <action android:name="android.intent.action.APPLICATION_PREFERENCES" />
+                <category android:name="android.intent.category.PREFERENCE" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".AdvancedSmashing"
             android:configChanges="orientation|keyboardHidden|screenSize"
