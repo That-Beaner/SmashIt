@@ -27,15 +27,15 @@ public class SettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
-        numberInput = (RelativeLayout) findViewById(R.id.numberLayout);
+        numberInput = findViewById(R.id.numberLayout);
 
-        namingMethod = (Spinner) findViewById(R.id.namingMethod);
+        namingMethod = findViewById(R.id.namingMethod);
         ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(this, R.array.NamingMethods, android.R.layout.simple_spinner_dropdown_item);
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         namingMethod.setAdapter(adapter2);
 
 
-        smashingMethod = (Spinner) findViewById(R.id.smashingMode);
+        smashingMethod = findViewById(R.id.smashingMode);
         ArrayAdapter<CharSequence> adapter3 = ArrayAdapter.createFromResource(this, R.array.SmashingMethods, android.R.layout.simple_spinner_dropdown_item);
         adapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         smashingMethod.setAdapter(adapter3);
@@ -73,7 +73,7 @@ public class SettingsActivity extends AppCompatActivity {
             }
         });
 
-        Button saveBtn = (Button) findViewById(R.id.saveBtn);
+        Button saveBtn = findViewById(R.id.saveBtn);
         saveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -86,7 +86,7 @@ public class SettingsActivity extends AppCompatActivity {
             }
         });
 
-        Button newExample = (Button) findViewById(R.id.newExample);
+        Button newExample = findViewById(R.id.newExample);
         newExample.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -94,11 +94,11 @@ public class SettingsActivity extends AppCompatActivity {
             }
         });
 
-        exampleName = (TextView) findViewById(R.id.exampleName);
+        exampleName = findViewById(R.id.exampleName);
         SmashingLogic.readAndInterpretSettings(getApplicationContext());
 
-        title5 = (TextView) findViewById(R.id.textView5);
-        baseName = (EditText) findViewById(R.id.namingStart);
+        title5 = findViewById(R.id.textView5);
+        baseName = findViewById(R.id.namingStart);
         baseName.setText(SmashingLogic.baseName);
         baseNameVisible(SmashingLogic.namingMethod != 0);
         baseName.addTextChangedListener(new TextWatcher() {
@@ -119,7 +119,7 @@ public class SettingsActivity extends AppCompatActivity {
             }
         });
 
-        number = (EditText) findViewById(R.id.number);
+        number = findViewById(R.id.number);
         number.setText(SmashingLogic.numberOfKahoots + "");
         number.addTextChangedListener(new TextWatcher() {
             @Override
