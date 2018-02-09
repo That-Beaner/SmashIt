@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -59,7 +60,13 @@ public class GamePinActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_pin);
 
-        gamePin = findViewById(R.id.gamePin);
+        // Set up the toolbar immediately after inflating with content
+        Toolbar toolbar = findViewById(R.id.toolbar_game_pin);
+        setSupportActionBar(toolbar);
+        //noinspection ConstantConditions
+        getSupportActionBar().setTitle(R.string.app_name);
+
+        gamePin = findViewById(R.id.game_pin_input);
 
         Button enterBtn = findViewById(R.id.enter);
         enterBtn.setOnClickListener(new View.OnClickListener() {
