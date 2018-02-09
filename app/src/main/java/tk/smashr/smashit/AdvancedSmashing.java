@@ -1,13 +1,9 @@
 package tk.smashr.smashit;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.os.Debug;
+import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.text.style.UpdateAppearance;
-import android.util.Log;
 import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -17,13 +13,10 @@ import android.widget.TextView;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdSize;
-import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.MobileAds;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import okhttp3.OkHttpClient;
 
 public class AdvancedSmashing extends AppCompatActivity {
@@ -78,7 +71,7 @@ public class AdvancedSmashing extends AppCompatActivity {
         yellowText = (TextView) findViewById(R.id.yellowText);
         blueText = (TextView) findViewById(R.id.blueText);
         greenText = (TextView) findViewById(R.id.greenText);
-        isRandom = (CheckBox)findViewById(R.id.isRandom);
+        isRandom = (CheckBox) findViewById(R.id.isRandom);
         joined = (TextView) findViewById(R.id.joined);
         answered = (TextView) findViewById(R.id.answered);
 
@@ -110,8 +103,7 @@ public class AdvancedSmashing extends AppCompatActivity {
         isRandom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (queuedAnswer)
-                {
+                if (queuedAnswer) {
                     new Handler().post(new Runnable() {
                         @Override
                         public void run() {
@@ -131,7 +123,7 @@ public class AdvancedSmashing extends AppCompatActivity {
             public void run() {
                 UpdateStats();
                 UpdateSelectedAnswer();
-                interval.postDelayed(updateStatsRun,30);
+                interval.postDelayed(updateStatsRun, 30);
             }
         };
 
@@ -152,30 +144,28 @@ public class AdvancedSmashing extends AppCompatActivity {
             @Override
             public void onPageFinished(WebView view, String url) {
 
-                if(!launched) {
+                if (!launched) {
                     //startService(service);
                     //if (SmashingLogic.smashingMode == 0)
                     //{
-                        for (int i = 0; i < SmashingLogic.numberOfKahoots; i++)
-                        {
-                            challenges.add(new KahootChallenge(gamePin, kahootConsole, queue, AdvancedSmashing.this));
-                        }
+                    for (int i = 0; i < SmashingLogic.numberOfKahoots; i++) {
+                        challenges.add(new KahootChallenge(gamePin, kahootConsole, queue, AdvancedSmashing.this));
+                    }
                     //}
                     //else
                     //{
                     //    challenges.add(new KahootChallenge(gamePin, kahootConsole, queue, AdvancedSmashing.this));
                     //}
                 }
-                launched=true;
+                launched = true;
             }
         });
-        interval.postDelayed(updateStatsRun,30);
+        interval.postDelayed(updateStatsRun, 30);
     }
 
     @Override
-    protected void onDestroy()
-    {
-        for(int i=0; i<kahootSmashers.size(); i++) {
+    protected void onDestroy() {
+        for (int i = 0; i < kahootSmashers.size(); i++) {
             kahootSmashers.get(i).disconnect();
         }
         super.onDestroy();
@@ -184,7 +174,7 @@ public class AdvancedSmashing extends AppCompatActivity {
     @Override
     public void onBackPressed() {
 
-        for(int i=0; i<kahootSmashers.size(); i++) {
+        for (int i = 0; i < kahootSmashers.size(); i++) {
             kahootSmashers.get(i).disconnect();
         }
 
@@ -192,29 +182,23 @@ public class AdvancedSmashing extends AppCompatActivity {
         startActivity(startSmash);
         finish();
     }
-    public void buttonClicked(int index)
-    {
-        if(!answerPossible)
-        {
+
+    public void buttonClicked(int index) {
+        if (!answerPossible) {
             return;
         }
         isRandom.setChecked(false);
-        if(selectedAnswer==index)
-        {
-            selectedAnswer=-1;
-        }
-        else
-        {
+        if (selectedAnswer == index) {
+            selectedAnswer = -1;
+        } else {
             selectedAnswer = index;
         }
         UpdateSelectedAnswer();
-        if(queuedAnswer)
-        {
+        if (queuedAnswer) {
             new Handler().post(new Runnable() {
                 @Override
                 public void run() {
-                    for(int i=0; i<kahootSmashers.size(); i++)
-                    {
+                    for (int i = 0; i < kahootSmashers.size(); i++) {
                         kahootSmashers.get(i).AnswerQuestion(4);
                     }
                 }
@@ -222,17 +206,13 @@ public class AdvancedSmashing extends AppCompatActivity {
         }
     }
 
-    private void UpdateSelectedAnswer()
-    {
-        if(answerPossible&&!isRandom.isChecked())
-        {
-            redBtn.setBackgroundResource(selectedAnswer==0?R.drawable.red_answer_pressed:R.drawable.red_answer);
-            blueBtn.setBackgroundResource(selectedAnswer==1?R.drawable.blue_answer_pressed:R.drawable.blue_answer);
-            yellowBtn.setBackgroundResource(selectedAnswer==2?R.drawable.yellow_answer_pressed:R.drawable.yellow_answer);
-            greenBtn.setBackgroundResource(selectedAnswer==3?R.drawable.green_answer_pressed:R.drawable.green_answer);
-        }
-        else
-        {
+    private void UpdateSelectedAnswer() {
+        if (answerPossible && !isRandom.isChecked()) {
+            redBtn.setBackgroundResource(selectedAnswer == 0 ? R.drawable.red_answer_pressed : R.drawable.red_answer);
+            blueBtn.setBackgroundResource(selectedAnswer == 1 ? R.drawable.blue_answer_pressed : R.drawable.blue_answer);
+            yellowBtn.setBackgroundResource(selectedAnswer == 2 ? R.drawable.yellow_answer_pressed : R.drawable.yellow_answer);
+            greenBtn.setBackgroundResource(selectedAnswer == 3 ? R.drawable.green_answer_pressed : R.drawable.green_answer);
+        } else {
             redBtn.setBackgroundResource(R.drawable.red_answer_pressed);
             blueBtn.setBackgroundResource(R.drawable.blue_answer_pressed);
             yellowBtn.setBackgroundResource(R.drawable.yellow_answer_pressed);
@@ -240,11 +220,9 @@ public class AdvancedSmashing extends AppCompatActivity {
         }
     }
 
-    public void addToken(String token)
-    {
+    public void addToken(String token) {
         currentId++;
-        if(currentId%5==0)
-        {
+        if (currentId % 5 == 0) {
             client.add(new OkHttpClient());
         }
         rightAnswer.add(false);
@@ -254,83 +232,68 @@ public class AdvancedSmashing extends AppCompatActivity {
         kahootSmashers.add(new KahootHandle(gamePin, currentId, client.get(client.size() - 1), this, token));
     }
 
-    public String GetName(int index)
-    {
+    public String GetName(int index) {
         return SmashingLogic.generateName(index);
     }
 
-    public void LoggedIn(int id, boolean loggedInB)
-    {
-        loggedIn.set(id,loggedInB);
+    public void LoggedIn(int id, boolean loggedInB) {
+        loggedIn.set(id, loggedInB);
     }
 
-    public Integer GetHighestRank()
-    {
+    public Integer GetHighestRank() {
         int highest = 0;
-        for(int i=1; i<ranks.size(); i++)
-        {
-            if(ranks.get(i)<ranks.get(highest))
-            {
+        for (int i = 1; i < ranks.size(); i++) {
+            if (ranks.get(i) < ranks.get(highest)) {
                 highest = i;
             }
         }
         return ranks.get(highest);
     }
 
-    public Integer GetResponse(int choices, int index)
-    {
-        if(isRandom.isChecked()) {
+    public Integer GetResponse(int choices, int index) {
+        if (isRandom.isChecked()) {
             int choice = (int) (Math.random() * choices);
             answers.set(index, choice);
             return choice;
-        }
-        else if(selectedAnswer!=-1)
-        {
+        } else if (selectedAnswer != -1) {
             answers.set(index, selectedAnswer);
             return selectedAnswer;
         }
         answers.set(index, -1);
-        queuedAnswer=true;
+        queuedAnswer = true;
         return -1;
     }
 
-    public void addQuestionResult(int index, boolean correct, int rank)
-    {
-        rightAnswer.set(index,correct);
-        ranks.set(index,rank);
-        queuedAnswer=false;
+    public void addQuestionResult(int index, boolean correct, int rank) {
+        rightAnswer.set(index, correct);
+        ranks.set(index, rank);
+        queuedAnswer = false;
         answerPossible = false;
-        selectedAnswer=-1;
+        selectedAnswer = -1;
     }
 
-    private void UpdateStats()
-    {
-        if(loggedIn.size()==0)
-        {
+    private void UpdateStats() {
+        if (loggedIn.size() == 0) {
             redText.setText("0/0");
             greenText.setText("0/0");
             blueText.setText("0/0");
             yellowText.setText("0/0");
-            joined.setText(getString(R.string.joined)+" N/A");
-            answered.setText(getString(R.string.answered)+" N/A");
+            joined.setText(getString(R.string.joined) + " N/A");
+            answered.setText(getString(R.string.answered) + " N/A");
             return;
         }
         int loggedInCount = 0;
-        for(int i=0; i<loggedIn.size(); i++)
-        {
-            if(loggedIn.get(i))
-            {
+        for (int i = 0; i < loggedIn.size(); i++) {
+            if (loggedIn.get(i)) {
                 loggedInCount++;
             }
         }
-        int red=0;
-        int blue=0;
-        int yellow=0;
-        int green=0;
-        for(int i=0; i<answers.size(); i++)
-        {
-            switch(answers.get(i))
-            {
+        int red = 0;
+        int blue = 0;
+        int yellow = 0;
+        int green = 0;
+        for (int i = 0; i < answers.size(); i++) {
+            switch (answers.get(i)) {
                 case 0:
                     red++;
                     break;
@@ -344,16 +307,15 @@ public class AdvancedSmashing extends AppCompatActivity {
                     green++;
             }
         }
-        joined.setText(getString(R.string.joined)+" "+loggedInCount+"/"+loggedIn.size());
-        answered.setText(getString(R.string.answered) +" "+ (red+blue+yellow+green) + "/"+loggedIn.size());
-        redText.setText(red+"/"+loggedIn.size());
-        blueText.setText(blue+"/"+loggedIn.size());
-        yellowText.setText(yellow+"/"+loggedIn.size());
-        greenText.setText(green+"/"+loggedIn.size());
+        joined.setText(getString(R.string.joined) + " " + loggedInCount + "/" + loggedIn.size());
+        answered.setText(getString(R.string.answered) + " " + (red + blue + yellow + green) + "/" + loggedIn.size());
+        redText.setText(red + "/" + loggedIn.size());
+        blueText.setText(blue + "/" + loggedIn.size());
+        yellowText.setText(yellow + "/" + loggedIn.size());
+        greenText.setText(green + "/" + loggedIn.size());
     }
 
-    public void makeAnswerPossible()
-    {
+    public void makeAnswerPossible() {
         answerPossible = true;
     }
 }

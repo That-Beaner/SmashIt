@@ -43,7 +43,7 @@
 
     <string name="joined">Joined: </string>
     <string name="verified">Verified: </string>
-    <string name="smashing">Smashing...</string>
+    <string name="smashing">Smashing…</string>
     <string name="warning">Most phones cannot handle more than 35 smashers</string>
     <string name="warningTitle">Please smash responsibly</string>
     <string name="opPhone">My phone\'s OP</string>
@@ -54,8 +54,8 @@
     <string name="invalidPin">Game pin invalid</string>
     <string name="enterGameCode">You will need to enter the game code</string>
     <string name="twoStepVerify">2 step verification</string>
-    <string name="loadingSmashers">Loading smashers...</string>
+    <string name="loadingSmashers">Loading smashers…</string>
     <string name="legacySmashers">Smashers loaded (Legacy mode)</string>
     <string name="allVerified">All verified</string>
-    <string name="smashingProgress">Smashing in progress...</string>
+    <string name="smashingProgress">Smashing in progress…</string>
 </resources>

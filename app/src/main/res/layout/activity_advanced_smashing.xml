@@ -4,8 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/kahootBlue"
-    tools:context="tk.smashr.kahootsmasher.AdvancedSmashing"
-    android:screenOrientation="portrait">
+    android:screenOrientation="portrait"
+    tools:context="tk.smashr.smashit.AdvancedSmashing">
 
     <TextView
         android:id="@+id/joined"
@@ -13,9 +13,9 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="15dp"
-        android:textSize="13sp"
         android:text="@string/joined"
-        android:textColor="@color/black" />
+        android:textColor="@color/black"
+        android:textSize="13sp" />
 
     <TextView
         android:id="@+id/answered"
@@ -24,17 +24,17 @@
         android:layout_below="@+id/joined"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="12dp"
-        android:textSize="13sp"
         android:text="@string/answered"
-        android:textColor="@color/black" />
+        android:textColor="@color/black"
+        android:textSize="13sp" />
 
     <RelativeLayout
+        android:id="@+id/relativeLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:id="@+id/relativeLayout"
         android:layout_below="@+id/answered"
-        android:layout_centerHorizontal="true">
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp">
 
         <Button
             android:id="@+id/redButton"
@@ -50,9 +50,9 @@
             android:layout_alignBaseline="@+id/redButton"
             android:layout_alignBottom="@+id/redButton"
             android:layout_marginStart="10dp"
-            android:textSize="13sp"
             android:layout_toEndOf="@+id/redButton"
-            android:text="0/100" />
+            android:text="0/100"
+            android:textSize="13sp" />
 
         <Button
             android:id="@+id/blueButton"
@@ -71,9 +71,9 @@
             android:layout_alignBaseline="@+id/blueButton"
             android:layout_alignBottom="@+id/blueButton"
             android:layout_marginStart="10dp"
-            android:textSize="13sp"
             android:layout_toEndOf="@+id/blueButton"
-            android:text="0/100" />
+            android:text="0/100"
+            android:textSize="13sp" />
 
         <Button
             android:id="@+id/yellowButton"
@@ -92,9 +92,9 @@
             android:layout_alignBaseline="@+id/yellowButton"
             android:layout_alignBottom="@+id/yellowButton"
             android:layout_marginStart="10dp"
-            android:textSize="13sp"
             android:layout_toEndOf="@+id/yellowButton"
-            android:text="0/100" />
+            android:text="0/100"
+            android:textSize="13sp" />
 
         <Button
             android:id="@+id/greenButton"
@@ -113,9 +113,9 @@
             android:layout_alignBaseline="@+id/greenButton"
             android:layout_alignBottom="@+id/greenButton"
             android:layout_marginStart="10dp"
-            android:textSize="13sp"
             android:layout_toEndOf="@+id/greenButton"
-            android:text="0/100" />
+            android:text="0/100"
+            android:textSize="13sp" />
 
     </RelativeLayout>
 

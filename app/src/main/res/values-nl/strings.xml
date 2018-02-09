@@ -3,7 +3,7 @@
     <string name="game_pin">Game Pin</string>
     <string name="enter">Doorgaan</string>
     <string name="smashIt">Kraak het!</string>
-    <string name="title_activity_smashing">Bezig met kraken...</string>
+    <string name="title_activity_smashing">Bezig met kraken…</string>
     <string name="title_activity_settings">Instellingen</string>
 
     <string name="answered">Beantwoord: </string>
@@ -36,7 +36,7 @@
     <string name="namingMethod">Benoemings methode</string>
     <string name="joined">Toegetreden:</string>
     <string name="verified">Geverifieerd:</string>
-    <string name="smashing">Kraken...</string>
+    <string name="smashing">Kraken…</string>
     <string name="warning">Meeste mobieltjes kunnen niet meer dan 35 Krakers ondersteunen</string>
     <string name="warningTitle">Kraak alstublieft verantwoordelijk</string>
     <string name="opPhone">Mijn telefoon is the goed</string>
@@ -47,8 +47,8 @@
     <string name="invalidPin">Game pin is ongeldig</string>
     <string name="enterGameCode">Je zal de game code moeten invoeren</string>
     <string name="twoStepVerify">2 stappen verificatie</string>
-    <string name="loadingSmashers">Krakers laden...</string>
+    <string name="loadingSmashers">Krakers laden…</string>
     <string name="legacySmashers">Krakers geladen (Legacy mode)</string>
     <string name="allVerified">Alles geverifieerd</string>
-    <string name="smashingProgress">Kraken wordt uitgevoerd...</string>
+    <string name="smashingProgress">Kraken wordt uitgevoerd…</string>
 </resources>

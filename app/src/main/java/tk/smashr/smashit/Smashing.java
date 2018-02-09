@@ -1,5 +1,6 @@
 package tk.smashr.smashit;
 
+import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
@@ -10,48 +11,42 @@ import android.util.Log;
 import android.view.View;
 import android.webkit.ValueCallback;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.webkit.WebViewClient;
 import android.widget.TableLayout;
 import android.widget.TextView;
-import android.app.AlertDialog;
 
 public class Smashing extends AppCompatActivity {
+    int count = 0;
+    boolean hasStarted = false;
+    boolean pinNeeded = false;
+    boolean staying = false;
+    //Alert btn
+    AlertDialog pinWrong;
+    AlertDialog needVerification;
     private int gamePin;
     private LinearLayout layout;
     private Boolean legacyMode = true;
     private WebView webViews[];
     private boolean hasJoined[];
     private boolean verified[];
-    int count = 0;
-    boolean hasStarted = false;
-    boolean pinNeeded = false;
-    boolean staying = false;
     private String combination = "";
-
     private Handler handler = new Handler();
-
     //UI
     private TextView smashingReadout;
     private TextView verifiedReadouts;
-
     private TableLayout allBtn;
     private Button redButton;
     private Button yellowButton;
     private Button greenButton;
     private Button blueButton;
-
-    //Alert btn
-    AlertDialog pinWrong;
-    AlertDialog needVerification;
-
     private boolean hasEnded = false;
 
     private Runnable testSmashingNumber = new Runnable() {
         @Override
         public void run() {
-            if(!hasEnded) {
+            if (!hasEnded) {
                 for (Integer i = 0; i < SmashingLogic.numberOfKahoots; i++) {
                     webViews[i].evaluateJavascript("isSmashing('" + i.toString() + "');", new ValueCallback<String>() {
                         @Override
@@ -132,8 +127,7 @@ public class Smashing extends AppCompatActivity {
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_smashing);
 
@@ -153,53 +147,53 @@ public class Smashing extends AppCompatActivity {
         layout = (LinearLayout) findViewById(R.id.layout);
         LinearLayout.LayoutParams layoutp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
 
-            SmashingLogic.readAndInterpretSettings(getApplicationContext());
-            hasJoined = new boolean[SmashingLogic.numberOfKahoots];
-            verified = new boolean[SmashingLogic.numberOfKahoots];
-            webViews = new WebView[SmashingLogic.numberOfKahoots];
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT && SmashingLogic.smashingMode!=2) {
-                legacyMode = false;
-            }
+        SmashingLogic.readAndInterpretSettings(getApplicationContext());
+        hasJoined = new boolean[SmashingLogic.numberOfKahoots];
+        verified = new boolean[SmashingLogic.numberOfKahoots];
+        webViews = new WebView[SmashingLogic.numberOfKahoots];
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT && SmashingLogic.smashingMode != 2) {
+            legacyMode = false;
+        }
 
-            Bundle b = getIntent().getExtras();
-            if (b != null) {
-                gamePin = b.getInt("gamePin");
-            }
-            for (int i = 0; i < SmashingLogic.numberOfKahoots; i++) {
-                webViews[i] = new WebView(this);
-                webViews[i].getSettings().setJavaScriptEnabled(true);
-                webViews[i].setVisibility(View.GONE);
-                webViews[i].loadUrl("https://kahoot.it");
-                webViews[i].getSettings().setBlockNetworkImage(true);
-                webViews[i].setWebViewClient(new WebViewClient() {
+        Bundle b = getIntent().getExtras();
+        if (b != null) {
+            gamePin = b.getInt("gamePin");
+        }
+        for (int i = 0; i < SmashingLogic.numberOfKahoots; i++) {
+            webViews[i] = new WebView(this);
+            webViews[i].getSettings().setJavaScriptEnabled(true);
+            webViews[i].setVisibility(View.GONE);
+            webViews[i].loadUrl("https://kahoot.it");
+            webViews[i].getSettings().setBlockNetworkImage(true);
+            webViews[i].setWebViewClient(new WebViewClient() {
 
-                    @Override
-                    public void onPageFinished(WebView view, String url) {
-                        view.getSettings().setBlockNetworkImage(false);
-                        count++;
-                        Log.println(Log.ERROR, "Ran", "count: "+count);
-                        if ((Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && count == SmashingLogic.numberOfKahoots * 2) || (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP && count == SmashingLogic.numberOfKahoots)) {
-                            handler.postDelayed(new Runnable() {
-                                @Override
-                                public void run() {
-                                    hasStarted = true;
-                                    for (int i = 0; i < webViews.length; i++) {
-                                        injectJS(webViews[i]);
-                                        if (!legacyMode) {
-                                            runJS(i);
-                                            handler.postDelayed(testSmashingNumber, 3000);
-                                        }
+                @Override
+                public void onPageFinished(WebView view, String url) {
+                    view.getSettings().setBlockNetworkImage(false);
+                    count++;
+                    Log.println(Log.ERROR, "Ran", "count: " + count);
+                    if ((Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && count == SmashingLogic.numberOfKahoots * 2) || (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP && count == SmashingLogic.numberOfKahoots)) {
+                        handler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                hasStarted = true;
+                                for (int i = 0; i < webViews.length; i++) {
+                                    injectJS(webViews[i]);
+                                    if (!legacyMode) {
+                                        runJS(i);
+                                        handler.postDelayed(testSmashingNumber, 3000);
                                     }
-                                    updateReadout();
                                 }
-                            },3000);
-                        }
-                        super.onPageFinished(view, url);
+                                updateReadout();
+                            }
+                        }, 3000);
                     }
-                });
+                    super.onPageFinished(view, url);
+                }
+            });
 
-                layout.addView(webViews[i], layoutp);
-            }
+            layout.addView(webViews[i], layoutp);
+        }
         Button backButton = (Button) findViewById(R.id.backButton);
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -252,25 +246,21 @@ public class Smashing extends AppCompatActivity {
     }
 
     private void ButtonClicked(Integer number) {
-        if(combination.length() == 4)
-        {
+        if (combination.length() == 4) {
             return;
         }
-        combination+=number.toString();
-        if(combination.length()==3)
-        {
-            for(Integer i=0; i<4; i++)
-            {
-                if(!combination.contains(i.toString()))
-                {
-                    combination+=i.toString();
+        combination += number.toString();
+        if (combination.length() == 3) {
+            for (Integer i = 0; i < 4; i++) {
+                if (!combination.contains(i.toString())) {
+                    combination += i.toString();
                     break;
                 }
             }
         }
     }
-    private void resetCombo()
-    {
+
+    private void resetCombo() {
         combination = "";
 
         redButton.setEnabled(true);
@@ -302,8 +292,7 @@ public class Smashing extends AppCompatActivity {
                 numberSmashing++;
             }
         }
-        if(pinNeeded)
-        {
+        if (pinNeeded) {
             verifiedReadouts.setVisibility(View.VISIBLE);
             allBtn.setVisibility(View.VISIBLE);
             Integer numberVerified = 0;
@@ -315,21 +304,20 @@ public class Smashing extends AppCompatActivity {
             if (numberVerified.equals(SmashingLogic.numberOfKahoots)) {
                 allBtn.setVisibility(View.INVISIBLE);
                 verifiedReadouts.setText(getString(R.string.allVerified));
-            }else
-            {
-                verifiedReadouts.setText(getString(R.string.verified)+" "+ numberVerified +"/"+SmashingLogic.numberOfKahoots);
+            } else {
+                verifiedReadouts.setText(getString(R.string.verified) + " " + numberVerified + "/" + SmashingLogic.numberOfKahoots);
             }
         }
         if (numberSmashing.equals(SmashingLogic.numberOfKahoots)) {
             smashingReadout.setText(getString(R.string.smashingProgress));
         } else {
-            smashingReadout.setText(getString(R.string.joined) +" "+ numberSmashing + "/" + SmashingLogic.numberOfKahoots);
+            smashingReadout.setText(getString(R.string.joined) + " " + numberSmashing + "/" + SmashingLogic.numberOfKahoots);
         }
     }
 
     private void injectJSOld(WebView webView) {
         try {
-            Log.println(Log.ERROR, "Ran" ,"GOOD");
+            Log.println(Log.ERROR, "Ran", "GOOD");
             webView.loadUrl("javascript:" +
                     "var linksLength = document.head.getElementsByTagName('link').length;" +
                     "for(var i=0; i<linksLength;i++){document.head.getElementsByTagName('link')[0].remove()}" +
@@ -353,7 +341,7 @@ public class Smashing extends AppCompatActivity {
                     "var linksLength = document.head.getElementsByTagName('link').length;" +
                     "for(var i=0; i<linksLength;i++){document.head.getElementsByTagName('link')[0].remove();}" +
                     "var isInGame = false;" +
-                    "var isVerified = false;"+
+                    "var isVerified = false;" +
                     "function isSmashing(returnNumber){if(isInGame){if(isVerified){return 'gv'+returnNumber;}else{return 'g'+returnNumber;}}return returnNumber;}" +
                     "function takeNextStep(gamePin,name,answer,returnVal,verify){if($('#inputSession').length==1){isVerified=false;isInGame=false;$('#inputSession').val(gamePin);$('#inputSession').trigger('change');setTimeout(function(){$('#inputSession').submit()},10);}else if($('#username').length == 1){isInGame = true;$('#username').val(name);$('#username').trigger('change');setTimeout(function(){$('#username').submit()},10);}else if($('.two-factor-auth-sequence__card.two-factor-auth-sequence__card--0').length!=0){isVerified=false;if(verify==''){return 'v'+returnVal;}else if($('.two-factor-auth__sub-heading.ng-binding').html() != 'Match the pattern on screen'){return 'i'+returnVal;}else{for(var i=0;i<4;i++){$('.two-factor-auth-sequence__card.two-factor-auth-sequence__card--' + verify[i]).mousedown();}}} else if($('.answer').length!=0){isVerified=true;$('.answer.answer'+answer).mousedown()}else{isVerified=true;}return 'n'+returnVal;}");
         } catch (Exception e) {

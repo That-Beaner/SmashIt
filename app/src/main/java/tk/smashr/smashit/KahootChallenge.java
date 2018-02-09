@@ -14,11 +14,11 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 class KahootChallenge {
-    private String gamepin;
     final private WebView kahootConsole;
     final private RequestQueue queue;
     private final AdvancedSmashing parent;
     private final MetaRequest stringRequest;
+    private String gamepin;
 
     KahootChallenge(int gamepin1, WebView kahootConsoleRef, RequestQueue queue1, AdvancedSmashing parent1) {
         gamepin = gamepin1 + "";
