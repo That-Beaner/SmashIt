@@ -59,9 +59,9 @@ public class GamePinActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_pin);
 
-        gamePin = (EditText) findViewById(R.id.gamePin);
+        gamePin = findViewById(R.id.gamePin);
 
-        Button enterBtn = (Button) findViewById(R.id.enter);
+        Button enterBtn = findViewById(R.id.enter);
         enterBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

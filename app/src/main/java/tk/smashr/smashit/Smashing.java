@@ -144,7 +144,7 @@ public class Smashing extends AppCompatActivity {
         gameCode.setPositiveButton(getString(R.string.contin), null).setMessage(getString(R.string.enterGameCode)).setTitle(getString(R.string.twoStepVerify));
         needVerification = gameCode.create();
 
-        layout = (LinearLayout) findViewById(R.id.layout);
+        layout = findViewById(R.id.layout);
         LinearLayout.LayoutParams layoutp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
 
         SmashingLogic.readAndInterpretSettings(getApplicationContext());
@@ -194,7 +194,7 @@ public class Smashing extends AppCompatActivity {
 
             layout.addView(webViews[i], layoutp);
         }
-        Button backButton = (Button) findViewById(R.id.backButton);
+        Button backButton = findViewById(R.id.backButton);
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -202,15 +202,15 @@ public class Smashing extends AppCompatActivity {
             }
         });
 
-        smashingReadout = (TextView) findViewById(R.id.Progress);
-        verifiedReadouts = (TextView) findViewById(R.id.Verified);
+        smashingReadout = findViewById(R.id.Progress);
+        verifiedReadouts = findViewById(R.id.Verified);
         verifiedReadouts.setVisibility(View.INVISIBLE);
 
-        redButton = (Button) findViewById(R.id.redBtn);
-        yellowButton = (Button) findViewById(R.id.yellowBtn);
-        blueButton = (Button) findViewById(R.id.BlueBtn);
-        greenButton = (Button) findViewById(R.id.GreenBtn);
-        allBtn = (TableLayout) findViewById(R.id.verifyBtns);
+        redButton = findViewById(R.id.redBtn);
+        yellowButton = findViewById(R.id.yellowBtn);
+        blueButton = findViewById(R.id.BlueBtn);
+        greenButton = findViewById(R.id.GreenBtn);
+        allBtn = findViewById(R.id.verifyBtns);
         View.OnClickListener orderBtn = new View.OnClickListener() {
             @Override
             public void onClick(View v) {

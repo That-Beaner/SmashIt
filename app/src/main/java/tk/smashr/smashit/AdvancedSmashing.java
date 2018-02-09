@@ -63,17 +63,17 @@ public class AdvancedSmashing extends AppCompatActivity {
         setContentView(R.layout.activity_advanced_smashing);
 
         //Get UI
-        redBtn = (Button) findViewById(R.id.redButton);
-        blueBtn = (Button) findViewById(R.id.blueButton);
-        yellowBtn = (Button) findViewById(R.id.yellowButton);
-        greenBtn = (Button) findViewById(R.id.greenButton);
-        redText = (TextView) findViewById(R.id.redText);
-        yellowText = (TextView) findViewById(R.id.yellowText);
-        blueText = (TextView) findViewById(R.id.blueText);
-        greenText = (TextView) findViewById(R.id.greenText);
-        isRandom = (CheckBox) findViewById(R.id.isRandom);
-        joined = (TextView) findViewById(R.id.joined);
-        answered = (TextView) findViewById(R.id.answered);
+        redBtn = findViewById(R.id.redButton);
+        blueBtn = findViewById(R.id.blueButton);
+        yellowBtn = findViewById(R.id.yellowButton);
+        greenBtn = findViewById(R.id.greenButton);
+        redText = findViewById(R.id.redText);
+        yellowText = findViewById(R.id.yellowText);
+        blueText = findViewById(R.id.blueText);
+        greenText = findViewById(R.id.greenText);
+        isRandom = findViewById(R.id.isRandom);
+        joined = findViewById(R.id.joined);
+        answered = findViewById(R.id.answered);
 
         redBtn.setOnClickListener(new View.OnClickListener() {
             @Override
