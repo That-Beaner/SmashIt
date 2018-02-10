@@ -1,10 +1,10 @@
 <resources>
-<string name="app_name">¡Quiebralo! - Kahoot</string>
-<string name="game_pin">Pin de Juego</string>
-<string name="enter">Enter</string>
-<string name="smashIt">¡Quiebralo!</string>
-<string name="title_activity_smashing">Quebrando el Kahoot…</string>
-<string name="title_activity_settings">Configuraciones</string>
+    <string name="app_name">¡Quiebralo! - Kahoot</string>
+    <string name="game_pin">Pin de Juego</string>
+    <string name="enter">Enter</string>
+    <string name="smashIt">¡Quiebralo!</string>
+    <string name="title_activity_smashing">Quebrando el Kahoot…</string>
+    <string name="title_activity_settings">Configuraciones</string>
 
     <string name="answered">Respuesta: </string>
     <string name="SmashingMode">Modo de quiebrar:</string>
@@ -23,35 +23,35 @@
     </string-array>
 
 
-<string-array name="NamingMethods">
-<item>Nombre Aleatorio</item>
-<item>Final de Palabra Aleatoria</item>
-<item> Mayúscula </item>
-    <item>Terminación ordenada</item>
-</string-array>
+    <string-array name="NamingMethods">
+        <item>Nombre Aleatorio</item>
+        <item>Final de Palabra Aleatoria</item>
+        <item> Mayúscula </item>
+        <item>Terminación ordenada</item>
+    </string-array>
 
-<string name="save"> Guardar </string>
-<string name="newExample">Nuevo ejemplo</string>
-<string name="numberSmashers">Numero de Quebradores:</string>
-<string name="baseName">Nombre de Base </string>
-<string name="example">Ejemplo:</string>
-<string name="namingMethod"> Método de Nombración</string>
-<string name="joined">Entrada:</string>
-<string name="verified">Verificado:</string>
-<string name="smashing">Quebrando...</string>
-<string name="warning"> La mayoria de los telefonos no pueden correr mas de 35 bots</string>
-<string name="warningTitle">Por favor quebrar responsablemente</string>
-<string name="opPhone">Mi telefono es muy hábil </string>
-<string name="cancel">Cancelar</string>
-<string name="abort">Abortar</string>
-<string name="contin">Continuar</string>
-<string name="contiuneVerify"> ¿Quieres continuar?</string>
-<string name="invalidPin">Pin de juego invalido</string>
-<string name="enterGameCode">Tendras que meter el código</string>
-<string name="twoStepVerify">Verificación de dos pasos</string>
-<string name="loadingSmashers">Cargando bots...</string>
-<string name="legacySmashers">Los bots están listos(Mode de Legado)</string>
-<string name="allVerified">Todo verificado</string>
-<string name="smashingProgress">Quebrando el Kahoot...</string>
+    <string name="save"> Guardar </string>
+    <string name="newExample">Nuevo ejemplo</string>
+    <string name="numberSmashers">Numero de Quebradores:</string>
+    <string name="baseName">Nombre de Base </string>
+    <string name="example">Ejemplo:</string>
+    <string name="namingMethod"> Método de Nombración</string>
+    <string name="joined">Entrada:</string>
+    <string name="verified">Verificado:</string>
+    <string name="smashing">Quebrando…</string>
+    <string name="warning"> La mayoría de los telefonos no pueden correr mas de 35 bots</string>
+    <string name="warningTitle">Por favor quebrar responsablemente</string>
+    <string name="opPhone">Mi telefono es muy hábil </string>
+    <string name="cancel">Cancelar</string>
+    <string name="abort">Abortar</string>
+    <string name="contin">Continuar</string>
+    <string name="contiuneVerify"> ¿Quieres continuar?</string>
+    <string name="invalidPin">Pin de juego invalido</string>
+    <string name="enterGameCode">Tendras que meter el código</string>
+    <string name="twoStepVerify">Verificación de dos pasos</string>
+    <string name="loadingSmashers">Cargando bots…</string>
+    <string name="legacySmashers">Los bots están listos(Mode de Legado)</string>
+    <string name="allVerified">Todo verificado</string>
+    <string name="smashingProgress">Quebrando el Kahoot…</string>
 </resources>
 

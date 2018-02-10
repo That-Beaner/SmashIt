@@ -38,7 +38,7 @@
 
     <string name="joined">Rejoindre:</string>
     <string name="verified">Vérifié:</string>
-    <string name="smashing">Fracasser...</string>
+    <string name="smashing">Fracasser…</string>
     <string name="warning">Les plus des téléphones ne peut pas utiliser plus de 35 fracas</string>
     <string name="warningTitle">S\'il vous plaît fracasser responsable</string>
     <string name="opPhone">Mon Téléphones est Dominé</string>
@@ -49,8 +49,8 @@
     <string name="invalidPin">Code de Jeux Invalide</string>
     <string name="enterGameCode">Il faut mettre le code de jeu</string>
     <string name="twoStepVerify">Vérification en deux étapes</string>
-    <string name="loadingSmashers">Chargement les Fracas...</string>
+    <string name="loadingSmashers">Chargement les Fracas…</string>
     <string name="legacySmashers">Les Fracas Sont chargés (Mode hérité)</string>
     <string name="allVerified">Tout Vérifié</string>
-    <string name="smashingProgress">Fracasser en Cours...</string>
+    <string name="smashingProgress">Fracasser en Cours…</string>
 </resources>

@@ -33,10 +33,8 @@ class MetaRequest extends JsonObjectRequest {
             jsonResponse.put("headers", new JSONObject(response.headers));
             return Response.success(jsonResponse,
                     HttpHeaderParser.parseCacheHeaders(response));
-        } catch (UnsupportedEncodingException e) {
+        } catch (UnsupportedEncodingException | JSONException e) {
             return Response.error(new ParseError(e));
-        } catch (JSONException je) {
-            return Response.error(new ParseError(je));
         }
     }
 }

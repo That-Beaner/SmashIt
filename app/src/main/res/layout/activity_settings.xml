@@ -1,144 +1,147 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_settings"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:paddingBottom="16dp"
+    android:paddingLeft="16dp"
     android:paddingRight="16dp"
     android:paddingTop="16dp"
-    android:paddingLeft="16dp"
     android:screenOrientation="portrait"
-    tools:context="tk.smashr.kahootsmasher.SettingsActivity">
-    <ScrollView
-        xmlns:android="http://schemas.android.com/apk/res/android"
+    tools:context="tk.smashr.smashit.SettingsActivity">
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent">
+
         <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content">
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/numberLayout">
-    <TextView
-        android:text="@string/numberSmashers"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:textSize="17sp"
-        android:textColor="@color/darkGrey" />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="number"
-        android:ems="7"
-        android:id="@+id/number"
-        style="@android:style/Widget.EditText"
-        android:layout_below="@+id/textView"
-        android:layout_alignParentStart="true" />
-    </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/numberLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:text="@string/numberSmashers"
+                    android:textColor="@color/darkGrey"
+                    android:textSize="17sp" />
+
+                <EditText
+                    android:id="@+id/number"
+                    style="@android:style/Widget.EditText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/textView"
+                    android:ems="7"
+                    android:inputType="number" />
+            </RelativeLayout>
 
 
-    <TextView
-        android:text="@string/SmashingMode"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/smashingModeText"
-        android:layout_below="@+id/numberLayout"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="13dp"
-        android:textSize="17sp"
-        android:textColor="@color/darkGrey" />
-    <Spinner
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/smashingMode"
-        android:layout_below="@+id/smashingModeText"
-        android:layout_marginTop="8dp" />
+            <TextView
+                android:id="@+id/smashingModeText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/numberLayout"
+                android:layout_marginTop="13dp"
+                android:text="@string/SmashingMode"
+                android:textColor="@color/darkGrey"
+                android:textSize="17sp" />
 
-    <TextView
-        android:text="@string/namingMethod"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView4"
-        android:layout_below="@+id/smashingMode"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="8dp"
-        android:textSize="17sp"
-        android:textColor="@color/darkGrey" />
+            <Spinner
+                android:id="@+id/smashingMode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/smashingModeText"
+                android:layout_marginTop="8dp" />
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/linearLayout"
-        android:layout_marginTop="8dp"
-        android:layout_below="@+id/textView4">
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/smashingMode"
+                android:layout_marginTop="8dp"
+                android:text="@string/namingMethod"
+                android:textColor="@color/darkGrey"
+                android:textSize="17sp" />
 
-        <Spinner
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/namingMethod"
-        android:layout_marginTop="8sp" />
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView4"
+                android:layout_marginTop="8dp"
+                android:orientation="vertical">
 
-        <TextView
-            android:text="@string/baseName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView5"
-            android:layout_marginTop="8dp"
-            android:visibility="visible"
-            android:textSize="17sp"
-            android:textColor="@color/darkGrey" />
+                <Spinner
+                    android:id="@+id/namingMethod"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8sp" />
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="text"
-            android:id="@+id/namingStart"
-            android:text="Smasher"
-            style="@android:style/Widget.EditText"
-            android:layout_marginTop="8dp"
-            android:textSize="15sp"
-            android:visibility="visible"
-            android:textColor="@color/black" />
-    </LinearLayout>
+                <TextView
+                    android:id="@+id/textView5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/baseName"
+                    android:textColor="@color/darkGrey"
+                    android:textSize="17sp"
+                    android:visibility="visible" />
 
-    <TextView
-        android:text="@string/example"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/exampleName"
-        android:layout_below="@+id/linearLayout"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="8dp"
-        android:textSize="17sp"
-        android:textColor="@color/darkGrey" />
+                <EditText
+                    android:id="@+id/namingStart"
+                    style="@android:style/Widget.EditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:inputType="text"
+                    android:text="Smasher"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:visibility="visible" />
+            </LinearLayout>
 
-    <Button
-        android:text="@string/newExample"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/newExample"
-        android:layout_below="@+id/exampleName"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="20dp"
-        android:layout_alignParentEnd="true"/>
+            <TextView
+                android:id="@+id/exampleName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/linearLayout"
+                android:layout_marginTop="8dp"
+                android:text="@string/example"
+                android:textColor="@color/darkGrey"
+                android:textSize="17sp" />
 
-    <Button
-        android:text="@string/save"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/saveBtn"
-        android:layout_below="@+id/newExample"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="5dp"
-        android:layout_alignParentEnd="true"/>
+            <Button
+                android:id="@+id/newExample"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/exampleName"
+                android:layout_marginTop="20dp"
+                android:text="@string/newExample" />
+
+            <Button
+                android:id="@+id/saveBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/newExample"
+                android:layout_marginTop="5dp"
+                android:text="@string/save" />
         </RelativeLayout>
     </ScrollView>
 </RelativeLayout>
