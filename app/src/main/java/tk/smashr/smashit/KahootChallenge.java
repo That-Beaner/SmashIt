@@ -9,7 +9,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.ServerError;
 import com.android.volley.VolleyError;
 
-import org.apache.commons.lang.StringEscapeUtils;
+import org.apache.commons.lang3.StringEscapeUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -36,7 +36,7 @@ class KahootChallenge {
                             kahootConsole.evaluateJavascript(response.getString("challenge"), new ValueCallback<String>() {
                                 @Override
                                 public void onReceiveValue(String mask) {
-                                    String newMask = StringEscapeUtils.unescapeJava(mask);
+                                    String newMask = StringEscapeUtils.unescapeEcmaScript(mask);
                                     newMask = newMask.substring(1, newMask.length() - 1);
                                     byte[] base64Decoded = Base64.decode(token.getBytes(), 0);
                                     for (int i = 0; i < base64Decoded.length; i++) {
