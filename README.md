@@ -10,7 +10,7 @@ If you would like to modify my code or re-distribute my work please credit me in
 <br>
 This project can be edited and compiled using Android Studio.
 <br>
-(I would also appreciate it if you contacted me beforehand at dev.programsofdaveduck@gmail.com)
+(I would also appreciate it if you contacted me before republishing this project at dev.programsofdaveduck@gmail.com)
 <br>
 ## Download
 To download the pre-complied version (updated for android 7.0 + w/ZeevoX improvements), click [here](https://www.mediafire.com/file/z957oji4cmo506p/app-release.apk)
