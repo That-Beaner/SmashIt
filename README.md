@@ -1,7 +1,4 @@
 # Kahoot-Smasher
-
-## SmashIt - Kahoot Edition
-
 This repository includes the source code of the app "SmashIt-Kahoot edition" which has since been removed from the Google Play store.
 <br>
 For all interested, here is the complete source code and assets.
@@ -16,7 +13,7 @@ This project can be edited and compiled using Android Studio.
 (I would also appreciate it if you contacted me beforehand at dev.programsofdaveduck@gmail.com)
 <br>
 ## Download
-Pre-complied version (updated for android 7.0 + w/ZeevoX improvements): https://www.mediafire.com/file/z957oji4cmo506p/app-release.apk
+To download the pre-complied version (updated for android 7.0 + w/ZeevoX improvements), click [here](https://www.mediafire.com/file/z957oji4cmo506p/app-release.apk)
 <br>
 ## License
-I am not responsible for any misuse of this code as I provide it as an educational resource only.
+I am not responsible for any misuse of this code, as I provide it as an educational resource only.
