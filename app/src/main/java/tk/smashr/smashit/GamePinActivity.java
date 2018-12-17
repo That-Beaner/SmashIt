@@ -103,6 +103,8 @@ public class GamePinActivity extends AppCompatActivity {
                         }
                     });
                     queue.add(stringRequest);
+                } else {
+                    gamePin.setError("Please enter a Game PIN first.");
                 }
             }
         });
