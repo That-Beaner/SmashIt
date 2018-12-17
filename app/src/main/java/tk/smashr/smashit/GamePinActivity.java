@@ -3,9 +3,6 @@ package tk.smashr.smashit;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -19,6 +16,12 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+
+import java.util.Objects;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 
 public class GamePinActivity extends AppCompatActivity {
@@ -61,8 +64,7 @@ public class GamePinActivity extends AppCompatActivity {
         // Set up the toolbar immediately after inflating with content
         Toolbar toolbar = findViewById(R.id.toolbar_game_pin);
         setSupportActionBar(toolbar);
-        //noinspection ConstantConditions
-        getSupportActionBar().setTitle(R.string.app_name);
+        Objects.requireNonNull(getSupportActionBar()).setTitle(R.string.app_name);
 
         gamePin = findViewById(R.id.game_pin_input);
 

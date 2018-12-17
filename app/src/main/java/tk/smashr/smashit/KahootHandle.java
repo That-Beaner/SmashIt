@@ -14,19 +14,18 @@ import okhttp3.WebSocketListener;
 class KahootHandle {
     final private int smasherIndex;
     final private OkHttpClient httpClient;
-    private String gamepin;
+    private String gamePin;
     private WebSocket client;
     private String clientId = "";
     private Integer currentMessageId = 2;
-    private boolean initalSubscription = true;
-    private int subscriptionRepliesRecived = 0;
-    private boolean recivedQuestion = false;
+    private boolean initialSubscription = true;
+    private int subscriptionRepliesReceived = 0;
+    private boolean receivedQuestion = false;
     //Unideal
     private AdvancedSmashing parent;
-    private kahootListener listner;
 
-    KahootHandle(int gamepin1, int smasherIndex, OkHttpClient httpClient, AdvancedSmashing parent1, String token) {
-        gamepin = gamepin1 + "";
+    KahootHandle(int gamePin1, int smasherIndex, OkHttpClient httpClient, AdvancedSmashing parent1, String token) {
+        gamePin = gamePin1 + "";
         this.smasherIndex = smasherIndex;
         this.httpClient = httpClient;
         this.parent = parent1;
@@ -38,8 +37,8 @@ class KahootHandle {
     }
 
     private void connectClient(String rawToken) {
-        Request request = new Request.Builder().url("wss://kahoot.it/cometd/" + gamepin + "/" + rawToken).addHeader("Cookie", "no.mobitroll.session=" + gamepin).addHeader("Origin", "https://kahoot.it").build();
-        listner = new kahootListener();
+        Request request = new Request.Builder().url("wss://kahoot.it/cometd/" + gamePin + "/" + rawToken).addHeader("Cookie", "no.mobitroll.session=" + gamePin).addHeader("Origin", "https://kahoot.it").build();
+        kahootListener listner = new kahootListener();
         client = httpClient.newWebSocket(request, listner);
     }
 
@@ -47,7 +46,7 @@ class KahootHandle {
         int choice = parent.GetResponse(maxChoice, smasherIndex);
         if (choice != -1) {
             currentMessageId++;
-            client.send("[{\"channel\":\"/service/controller\",\"data\":{\"id\":45,\"type\":\"message\",\"gameid\":" + gamepin + ",\"host\":\"kahoot.it\",\"content\":\"{\\\"choice\\\":" + choice + ",\\\"meta\\\":{\\\"lag\\\":64,\\\"device\\\":{\\\"userAgent\\\":\\\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36\\\",\\\"screen\\\":{\\\"width\\\":1920,\\\"height\\\":1040}}}}\"},\"id\":\"" + (currentMessageId - 1) + "\",\"clientId\":\"" + clientId + "\"}]");
+            client.send("[{\"channel\":\"/service/controller\",\"data\":{\"id\":45,\"type\":\"message\",\"gameid\":" + gamePin + ",\"host\":\"kahoot.it\",\"content\":\"{\\\"choice\\\":" + choice + ",\\\"meta\\\":{\\\"lag\\\":64,\\\"device\\\":{\\\"userAgent\\\":\\\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36\\\",\\\"screen\\\":{\\\"width\\\":1920,\\\"height\\\":1040}}}}\"},\"id\":\"" + (currentMessageId - 1) + "\",\"clientId\":\"" + clientId + "\"}]");
             parent.answers.set(smasherIndex, choice);
         }
     }
@@ -70,7 +69,7 @@ class KahootHandle {
 
     private void sendLoginInfo() {
         try {
-            JSONObject message = new JSONObject("{\"data\":{\"type\":\"login\",\"gameid\":" + gamepin + ",\"host\":\"kahoot.it\",\"name\":\"" + parent.GetName(smasherIndex) + "\"}}");
+            JSONObject message = new JSONObject("{\"data\":{\"type\":\"login\",\"gameid\":" + gamePin + ",\"host\":\"kahoot.it\",\"name\":\"" + parent.GetName(smasherIndex) + "\"}}");
             sendMessage(message, "/service/controller");
         } catch (JSONException e) {
             //Bad JSON
@@ -116,10 +115,10 @@ class KahootHandle {
     }
 
     private void subscribe(JSONObject message) {
-        subscriptionRepliesRecived++;
-        if (initalSubscription && subscriptionRepliesRecived == 3) {
-            initalSubscription = false;
-            subscriptionRepliesRecived = 0;
+        subscriptionRepliesReceived++;
+        if (initialSubscription && subscriptionRepliesReceived == 3) {
+            initialSubscription = false;
+            subscriptionRepliesReceived = 0;
 
             sendSubscription("/service/controller", false);
             sendSubscription("/service/player", false);
@@ -130,14 +129,14 @@ class KahootHandle {
             sendSubscription("/service/status", true);
             sendConnectMessage();
         }
-        if (subscriptionRepliesRecived == 6) {
+        if (subscriptionRepliesReceived == 6) {
             sendLoginInfo();
         }
     }
 
     private void unsubscribe(JSONObject message) {
-        subscriptionRepliesRecived++;
-        if (subscriptionRepliesRecived == 6) {
+        subscriptionRepliesReceived++;
+        if (subscriptionRepliesReceived == 6) {
             sendLoginInfo();
         }
     }
@@ -156,20 +155,21 @@ class KahootHandle {
             JSONObject data = new JSONObject(message.getJSONObject("data").getString("content"));//.replace("[","\"[").replace("]","]\""));
 
             if (data.has("questionIndex")) {
-                if (recivedQuestion) {
-                    recivedQuestion = false;
+                if (receivedQuestion) {
+                    receivedQuestion = false;
                     parent.makeAnswerPossible();
                     JSONObject possibleAnswers = data.getJSONObject("answerMap");
                     AnswerQuestion(possibleAnswers.length());
                 } else {
                     parent.answers.set(smasherIndex, -1);
-                    recivedQuestion = true;
+                    receivedQuestion = true;
                 }
             } else if (data.has("isCorrect")) {
                 parent.addQuestionResult(smasherIndex, data.getBoolean("isCorrect"), data.getInt("rank"));
                 //parent.scores.set(smasherIndex,data.getInt("totalPointsWithoutBonuses"));
             }
         } catch (JSONException e) {
+            Log.e(getClass().getSimpleName(), e.toString());
         }
     }
 

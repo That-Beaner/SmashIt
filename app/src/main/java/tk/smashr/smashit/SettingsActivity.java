@@ -1,7 +1,6 @@
 package tk.smashr.smashit;
 
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -12,6 +11,10 @@ import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import java.text.MessageFormat;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class SettingsActivity extends AppCompatActivity {
     Spinner namingMethod;
@@ -120,7 +123,7 @@ public class SettingsActivity extends AppCompatActivity {
         });
 
         number = findViewById(R.id.number);
-        number.setText(SmashingLogic.numberOfKahoots + "");
+        number.setText(MessageFormat.format("{0}", SmashingLogic.numberOfKahoots));
         number.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -151,7 +154,7 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     private void updateExample() {
-        exampleName.setText(getString(R.string.example) + " " + SmashingLogic.generateName((int) (Math.random() * 100)));
+        exampleName.setText(String.format("%s %s", getString(R.string.example), SmashingLogic.generateName((int) (Math.random() * 100))));
     }
 
     private void updateNumber() {
