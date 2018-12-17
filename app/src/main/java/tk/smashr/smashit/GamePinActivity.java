@@ -77,6 +77,7 @@ public class GamePinActivity extends AppCompatActivity {
                             new Response.Listener<String>() {
                                 @Override
                                 public void onResponse(String response) {
+                                    VibrationUtils.shortVibrate(GamePinActivity.this);
                                     switch (SmashingLogic.smashingMode) {
                                         case 1:
                                         case 2:
@@ -97,6 +98,7 @@ public class GamePinActivity extends AppCompatActivity {
                         public void onErrorResponse(VolleyError error) {
                             //Alert
                             Log.println(Log.ERROR, "Pin", "Bad pin");
+                            VibrationUtils.vibrate(50, GamePinActivity.this);
                             pinWrong.show();
                         }
                     });
@@ -120,6 +122,7 @@ public class GamePinActivity extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         switch (item.getItemId()){
             case R.id.action_settings:
+                VibrationUtils.shortVibrate(this);
                 startActivity(new Intent(GamePinActivity.this, SettingsActivity.class));
         }
         return super.onOptionsItemSelected(item);

@@ -85,6 +85,7 @@ public class SettingsActivity extends AppCompatActivity {
         newExample.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                VibrationUtils.shortVibrate(SettingsActivity.this);
                 updateExample();
             }
         });
