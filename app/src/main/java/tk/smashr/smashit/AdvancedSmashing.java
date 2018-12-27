@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
@@ -144,11 +145,16 @@ public class AdvancedSmashing extends AppCompatActivity {
 
         queue = Volley.newRequestQueue(this);
         kahootConsole = new WebView(this);
-        kahootConsole.getSettings().setJavaScriptEnabled(true);
-        kahootConsole.getSettings().setDefaultTextEncodingName("utf-8");
+
+        WebSettings settings = kahootConsole.getSettings();
+        settings.setDefaultTextEncodingName("utf-8");
+        settings.setJavaScriptEnabled(true);
+        settings.setBlockNetworkImage(true);
+        settings.setDomStorageEnabled(true);
+
         kahootConsole.setVisibility(View.GONE);
         kahootConsole.loadUrl("https://kahoot.it");
-        kahootConsole.getSettings().setBlockNetworkImage(true);
+
         kahootConsole.setWebViewClient(new WebViewClient() {
             @Override
             public void onPageFinished(WebView view, String url) {
