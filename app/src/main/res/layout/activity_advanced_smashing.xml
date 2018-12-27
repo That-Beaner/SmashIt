@@ -8,7 +8,7 @@
     android:screenOrientation="portrait"
     tools:context="tk.smashr.smashit.AdvancedSmashing">
 
-    <android.support.design.widget.AppBarLayout
+    <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbarlayout_advanced_smashing"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -16,7 +16,7 @@
         android:background="@android:color/transparent"
         app:elevation="0dp">
 
-        <android.support.v7.widget.Toolbar
+        <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar_advanced_smashing"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -25,9 +25,9 @@
             app:elevation="0dp"
             app:title="@string/smashing"
             app:titleTextColor="@android:color/white" />
-    </android.support.design.widget.AppBarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
 
-    <android.support.v7.widget.CardView
+    <androidx.cardview.widget.CardView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
@@ -160,5 +160,5 @@
                 android:checked="true"
                 android:text="@string/randomAnswer" />
         </RelativeLayout>
-    </android.support.v7.widget.CardView>
+    </androidx.cardview.widget.CardView>
 </RelativeLayout>

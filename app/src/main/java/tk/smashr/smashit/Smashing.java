@@ -1,12 +1,10 @@
 package tk.smashr.smashit;
 
-import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.webkit.ValueCallback;
@@ -16,6 +14,11 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TextView;
+
+import java.text.MessageFormat;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class Smashing extends AppCompatActivity {
     int count = 0;
@@ -244,9 +247,9 @@ public class Smashing extends AppCompatActivity {
         }
         combination += number.toString();
         if (combination.length() == 3) {
-            for (Integer i = 0; i < 4; i++) {
-                if (!combination.contains(i.toString())) {
-                    combination += i.toString();
+            for (int i = 0; i < 4; i++) {
+                if (!combination.contains(Integer.toString(i))) {
+                    combination += Integer.toString(i);
                     break;
                 }
             }
@@ -260,7 +263,6 @@ public class Smashing extends AppCompatActivity {
         redButton.setBackgroundResource(R.drawable.red_answer);
 
         greenButton.setEnabled(true);
-        greenButton.setBackgroundResource(R.drawable.green_answer);
         greenButton.setBackgroundResource(R.drawable.green_answer);
 
         yellowButton.setEnabled(true);
@@ -298,13 +300,13 @@ public class Smashing extends AppCompatActivity {
                 allBtn.setVisibility(View.INVISIBLE);
                 verifiedReadouts.setText(getString(R.string.allVerified));
             } else {
-                verifiedReadouts.setText(getString(R.string.verified) + " " + numberVerified + "/" + SmashingLogic.numberOfKahoots);
+                verifiedReadouts.setText(MessageFormat.format("{0} {1}/{2}", getString(R.string.verified), numberVerified, SmashingLogic.numberOfKahoots));
             }
         }
         if (numberSmashing.equals(SmashingLogic.numberOfKahoots)) {
             smashingReadout.setText(getString(R.string.smashingProgress));
         } else {
-            smashingReadout.setText(getString(R.string.joined) + " " + numberSmashing + "/" + SmashingLogic.numberOfKahoots);
+            smashingReadout.setText(MessageFormat.format("{0} {1}/{2}", getString(R.string.joined), numberSmashing, SmashingLogic.numberOfKahoots));
         }
     }
 

@@ -1,7 +1,6 @@
 package tk.smashr.smashit;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -12,6 +11,12 @@ import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import java.text.MessageFormat;
+import java.util.Objects;
+
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class SettingsActivity extends AppCompatActivity {
     Spinner namingMethod;
@@ -26,6 +31,9 @@ public class SettingsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
+        ActionBar toolbar = Objects.requireNonNull(getSupportActionBar());
+        toolbar.setDisplayHomeAsUpEnabled(true);
+        toolbar.setDisplayShowHomeEnabled(true);
 
         numberInput = findViewById(R.id.numberLayout);
 
@@ -73,23 +81,11 @@ public class SettingsActivity extends AppCompatActivity {
             }
         });
 
-        Button saveBtn = findViewById(R.id.saveBtn);
-        saveBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (number.getText().length() == 0) {
-                    number.setText("50");
-                }
-                SmashingLogic.numberOfKahoots = Integer.parseInt(number.getText().toString());
-                SmashingLogic.saveToFile(getApplicationContext());
-                onBackPressed();
-            }
-        });
-
         Button newExample = findViewById(R.id.newExample);
         newExample.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                VibrationUtils.shortVibrate(SettingsActivity.this);
                 updateExample();
             }
         });
@@ -120,7 +116,7 @@ public class SettingsActivity extends AppCompatActivity {
         });
 
         number = findViewById(R.id.number);
-        number.setText(SmashingLogic.numberOfKahoots + "");
+        number.setText(MessageFormat.format("{0}", SmashingLogic.numberOfKahoots));
         number.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -151,7 +147,7 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     private void updateExample() {
-        exampleName.setText(getString(R.string.example) + " " + SmashingLogic.generateName((int) (Math.random() * 100)));
+        exampleName.setText(String.format("%s %s", getString(R.string.example), SmashingLogic.generateName((int) (Math.random() * 100))));
     }
 
     private void updateNumber() {
@@ -188,5 +184,21 @@ public class SettingsActivity extends AppCompatActivity {
     private void baseNameVisible(Boolean hide) {
         title5.setVisibility(hide ? View.GONE : View.VISIBLE);
         baseName.setVisibility(hide ? View.GONE : View.VISIBLE);
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (number.getText().length() == 0) {
+            number.setText("50");
+        }
+        SmashingLogic.numberOfKahoots = Integer.parseInt(number.getText().toString());
+        SmashingLogic.saveToFile(getApplicationContext());
+        super.onBackPressed();
     }
 }

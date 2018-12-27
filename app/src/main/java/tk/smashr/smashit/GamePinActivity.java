@@ -1,11 +1,8 @@
 package tk.smashr.smashit;
 
-import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -19,6 +16,12 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+
+import java.util.Objects;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 
 public class GamePinActivity extends AppCompatActivity {
@@ -61,8 +64,7 @@ public class GamePinActivity extends AppCompatActivity {
         // Set up the toolbar immediately after inflating with content
         Toolbar toolbar = findViewById(R.id.toolbar_game_pin);
         setSupportActionBar(toolbar);
-        //noinspection ConstantConditions
-        getSupportActionBar().setTitle(R.string.app_name);
+        Objects.requireNonNull(getSupportActionBar()).setTitle(R.string.app_name);
 
         gamePin = findViewById(R.id.game_pin_input);
 
@@ -75,6 +77,7 @@ public class GamePinActivity extends AppCompatActivity {
                             new Response.Listener<String>() {
                                 @Override
                                 public void onResponse(String response) {
+                                    VibrationUtils.shortVibrate(GamePinActivity.this);
                                     switch (SmashingLogic.smashingMode) {
                                         case 1:
                                         case 2:
@@ -95,10 +98,13 @@ public class GamePinActivity extends AppCompatActivity {
                         public void onErrorResponse(VolleyError error) {
                             //Alert
                             Log.println(Log.ERROR, "Pin", "Bad pin");
+                            VibrationUtils.vibrate(50, GamePinActivity.this);
                             pinWrong.show();
                         }
                     });
                     queue.add(stringRequest);
+                } else {
+                    gamePin.setError("Please enter a Game PIN first.");
                 }
             }
         });
@@ -118,6 +124,7 @@ public class GamePinActivity extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         switch (item.getItemId()){
             case R.id.action_settings:
+                VibrationUtils.shortVibrate(this);
                 startActivity(new Intent(GamePinActivity.this, SettingsActivity.class));
         }
         return super.onOptionsItemSelected(item);

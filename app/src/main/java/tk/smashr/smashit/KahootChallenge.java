@@ -18,10 +18,9 @@ class KahootChallenge {
     final private RequestQueue queue;
     private final AdvancedSmashing parent;
     private final MetaRequest stringRequest;
-    private String gamepin;
 
     KahootChallenge(int gamepin1, WebView kahootConsoleRef, RequestQueue queue1, AdvancedSmashing parent1) {
-        gamepin = gamepin1 + "";
+        String gamepin = gamepin1 + "";
         this.kahootConsole = kahootConsoleRef;
         this.queue = queue1;
         this.parent = parent1;

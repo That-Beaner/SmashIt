@@ -3,8 +3,6 @@ package tk.smashr.smashit;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -15,9 +13,13 @@ import android.widget.TextView;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
 
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import okhttp3.OkHttpClient;
 
 public class AdvancedSmashing extends AppCompatActivity {
@@ -66,8 +68,7 @@ public class AdvancedSmashing extends AppCompatActivity {
         // Set up the toolbar immediately after inflating with content
         Toolbar toolbar = findViewById(R.id.toolbar_advanced_smashing);
         setSupportActionBar(toolbar);
-        //noinspection ConstantConditions
-        getSupportActionBar().setTitle(R.string.title_activity_smashing);
+        Objects.requireNonNull(getSupportActionBar()).setTitle(R.string.title_activity_smashing);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         //Get UI
@@ -286,8 +287,8 @@ public class AdvancedSmashing extends AppCompatActivity {
             greenText.setText("0/0");
             blueText.setText("0/0");
             yellowText.setText("0/0");
-            joined.setText(getString(R.string.joined) + " N/A");
-            answered.setText(getString(R.string.answered) + " N/A");
+            joined.setText(String.format("%s N/A", getString(R.string.joined)));
+            answered.setText(String.format("%s N/A", getString(R.string.answered)));
             return;
         }
         int loggedInCount = 0;
@@ -315,12 +316,12 @@ public class AdvancedSmashing extends AppCompatActivity {
                     green++;
             }
         }
-        joined.setText(getString(R.string.joined) + " " + loggedInCount + "/" + loggedIn.size());
-        answered.setText(getString(R.string.answered) + " " + (red + blue + yellow + green) + "/" + loggedIn.size());
-        redText.setText(red + "/" + loggedIn.size());
-        blueText.setText(blue + "/" + loggedIn.size());
-        yellowText.setText(yellow + "/" + loggedIn.size());
-        greenText.setText(green + "/" + loggedIn.size());
+        joined.setText(MessageFormat.format("{0} {1}/{2}", getString(R.string.joined), loggedInCount, loggedIn.size()));
+        answered.setText(MessageFormat.format("{0} {1}/{2}", getString(R.string.answered), red + blue + yellow + green, loggedIn.size()));
+        redText.setText(MessageFormat.format("{0}/{1}", red, loggedIn.size()));
+        blueText.setText(MessageFormat.format("{0}/{1}", blue, loggedIn.size()));
+        yellowText.setText(MessageFormat.format("{0}/{1}", yellow, loggedIn.size()));
+        greenText.setText(MessageFormat.format("{0}/{1}", green, loggedIn.size()));
     }
 
     public void makeAnswerPossible() {

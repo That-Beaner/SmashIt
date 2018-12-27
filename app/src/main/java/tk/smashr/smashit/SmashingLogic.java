@@ -10,32 +10,32 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 class SmashingLogic {
-    public static Integer namingMethod;
-    public static String baseName;
+    static Integer namingMethod;
+    static String baseName;
     static Integer numberOfKahoots;
     static Integer smashingMode;
     //Smashing logic
     private static String namesExample[] = {"Ben Dover", "Eileen Dover", "Not in ur class", "Stephanie", "Sportacus", "Robbie Rotten", "Ziggy", "L0kesh;)", "RealPerson.mp4", "ur search history", "Cael Cooper:)", "Kim-Jong Uno", "Sernie Banders", "lorcant", "Not A Bot", "setup.exe", "admin1", "Mack attack", "mr moo moo man", "boris", "abdothepedo", "pacothetaco", "orman", "herobine", "chuck joris", "nerd3", "watergaminghd", "marijona", "SmashKahoot", "Kahoot smasher"};
 
     private static String randomCaps(String baseName) {
-        String newName = "";
+        StringBuilder newName = new StringBuilder();
         for (int i = 0; i < baseName.length(); i++) {
             if (Math.random() > 0.5) {
-                newName += String.valueOf(baseName.charAt(i)).toUpperCase();
+                newName.append(String.valueOf(baseName.charAt(i)).toUpperCase());
             } else {
-                newName += String.valueOf(baseName.charAt(i)).toLowerCase();
+                newName.append(String.valueOf(baseName.charAt(i)).toLowerCase());
             }
         }
-        return newName;
+        return newName.toString();
     }
 
     private static String generateRandomLetter(int length) {
-        String randomLetters = "";
+        StringBuilder randomLetters = new StringBuilder();
         String letters = "qwertyuiopasdfghjklzxcvbnm1234567890";
         for (int i = 0; i < length; i++) {
-            randomLetters += letters.charAt((int) (Math.random() * letters.length()));
+            randomLetters.append(letters.charAt((int) (Math.random() * letters.length())));
         }
-        return randomLetters;
+        return randomLetters.toString();
     }
 
     static String generateName(int id) {
@@ -119,13 +119,10 @@ class SmashingLogic {
         int length = (int) file.length();
         byte[] bytes = new byte[length];
         try {
-            FileInputStream inStream = new FileInputStream(file);
-            try {
+            try (FileInputStream inStream = new FileInputStream(file)) {
                 inStream.read(bytes);
                 contents = new String(bytes);
 
-            } finally {
-                inStream.close();
             }
         } catch (FileNotFoundException e) {
             String defaultValues = "75,0,smasher,0";
