@@ -15,7 +15,9 @@ class SmashingLogic {
     static Integer numberOfKahoots;
     static Integer smashingMode;
     //Smashing logic
-    private static String namesExample[] = {"Ben Dover", "Eileen Dover", "Not in ur class", "Stephanie", "Sportacus", "Robbie Rotten", "Ziggy", "L0kesh;)", "RealPerson.mp4", "ur search history", "Cael Cooper:)", "Kim-Jong Uno", "Sernie Banders", "lorcant", "Not A Bot", "setup.exe", "admin1", "Mack attack", "mr moo moo man", "boris", "abdothepedo", "pacothetaco", "orman", "herobine", "chuck joris", "nerd3", "watergaminghd", "marijona", "SmashKahoot", "Kahoot smasher"};
+    private static String namesExample[] = {
+        "Mohxy", "Vxire", "Gahmuret", "Tara", "Tomi", "Argor", "Kelretu", "Polyzynn", "Tekrala", "Kesta", "Suelle"
+    }
 
     private static String randomCaps(String baseName) {
         StringBuilder newName = new StringBuilder();
