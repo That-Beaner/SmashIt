@@ -16,8 +16,18 @@ class SmashingLogic {
     static Integer smashingMode;
     //Smashing logic
     private static String namesExample[] = {
-        "Mohxy", "Vxire", "Gahmuret", "Tara", "Tomi", "Argor", "Kelretu", "Polyzynn", "Tekrala", "Kesta", "Suelle",
-        "cuntlad", "BuyMyAids", "Wilihey", "Milkshook", "Kanker Luke", "SUCK YOUR MUM", "Acer", "ChRoMoSoMe CoLlEcToR",
+        "Ben_Dover", "Eileen_Dover", "Mike_Hawk", "Hugh_Jass", "Chris_Peacock", "Heywood_Jablome", "Dixie_Normous", 
+        "Barry_McKockiner", "Duncan_McOkiner", "Hugh_G_Rection", "Mike_Oxlong", "Phil_McCraken", "Ifarr_Tallnight",
+        "Gabe_Itch", "Moe_Lester", "Justin_Herass", "Todd_Lerfondler", "Gabe_Utsecks", "Stan_Keepus", "Tara_Dikoff",
+        "Eric_Shawn", "Alpha_Q", "Hugh_Janus", "Mike_Rotch_Burns", "Pat_Myza", "Betty_Phucker", "Knee_Grow", "Ms_Carriage",
+        "Ray_Pist", "Harry_Anoos", "Maya_Normus_Bhut", "Dang_Lin_Wang", "Anna_Borshin", "Hari_Balsac", "Ped_O'Phyl",
+        "Wilma_Dikfit", "School_Kahooter", "Tera_Wrist", "York_Oxmall", "Craven_Morehed", "Ice_Wallow_Come", "Jyant_Deck",
+        "Willie_B_Hardigan", "E_Norma_Stits", "Anita_P_Ness", "Bo_Nerr", "Gray_Zerclit", "Mike_Hunt", "Jack_Meoff", 
+        "Jack_Goff", "Jenny_Talia", "Mike_Lit", "Tess_Tickles", "Philip_Macroch", "Duncan_McCoconah", "Anne_Null",
+        "Cam_L_Toe", "Matt_Sterbater", "Harry_Coccen_Mihan", "Zuch_Mabaulz", "Baul_Zack", "Cle_Torres", "Taj_Maddick",
+        "Pooh_See", "Dig_Bick", "Dill_Dough"
+       // "Mohxy", "Vxire", "Gahmuret", "Tara", "Tomi", "Argor", "Kelretu", "Polyzynn", "Tekrala", "Kesta", "Suelle",
+       // "cuntlad", "BuyMyAids", "Wilihey", "Milkshook", "Kanker Luke", "SUCK YOUR MUM", "Acer", "ChRoMoSoMe CoLlEcToR",
     }
 
     private static String randomCaps(String baseName) {
